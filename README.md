@@ -75,7 +75,7 @@ Follow these steps to run the simulation locally on your machine:
 
 ## 📜 License
 
-This project is open-source and available under the MIT License. Feel free to fork, modify, and use it!
+This project is open-source and available under the [MIT License](LICENSE). Feel free to fork, modify, and use it!
 
 
 ---
