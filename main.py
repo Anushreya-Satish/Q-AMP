@@ -1,16 +1,3 @@
-"""
-main.py - Central Orchestrator for Q-AMP (Quantum Antimicrobial Peptide Designer)
-Team Lead / Coordinator: Anushreya Satish
-Repository: https://github.com/Anushreya-Satish/Q-AMP
-
-Orchestrates the end-to-end quantum antimicrobial peptide discovery pipeline:
-1. QUBO Matrix Generation (Drishti)
-2. Ising Hamiltonian Mapping (Gurshan)
-3. QAOA Circuit Expectation & Spectrum Bounds (Shibasis)
-4. Classical Optimization Engine (Srijan)
-5. Sequence Decoding & Structural Profile Visualization (Satyajit & Visualization)
-"""
-
 import numpy as np
 from qubo_matrix import build_qubo_matrix         
 from ising_mapper import qubo_to_ising, to_sparse_pauli_op  
