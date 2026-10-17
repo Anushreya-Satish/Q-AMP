@@ -28,13 +28,13 @@ if __name__ == "__main__":
     
     print("[2/5] Mapping QUBO to Ising Hamiltonian...")
     h, J, offset = qubo_to_ising(Q)
-    hamiltonian = to_sparse_pauli_op(h, J, offset)[cite: 5]
+    hamiltonian = to_sparse_pauli_op(h, J, offset)
     
-    energies = cost_diagonal(hamiltonian)[cite: 5]
+    energies = cost_diagonal(hamiltonian)
     print(f"      Spectrum bounds: min = {energies.min():.2f} eV, max = {energies.max():.2f} eV")
     
     print(f"[3/5] Running classical optimizer (depth p={p_layers})...")
-    cost_function = make_cost_function(hamiltonian, p=p_layers)[cite: 5]
+    cost_function = make_cost_function(hamiltonian, p=p_layers)
     
     best_result = None
     for seed in range(5):
@@ -52,8 +52,8 @@ if __name__ == "__main__":
     print(f"      Optimization converged! Ground-State Energy: {best_result.optimal_energy:.4f} eV")
     
     print("[4/5] Sampling optimal bitstring and decoding peptide sequence...")
-    bits, probability = sample_ground_state(hamiltonian, best_result.optimal_params, p=p_layers)[cite: 5]
-    sequence = decode_sequence(bits)[cite: 5]
+    bits, probability = sample_ground_state(hamiltonian, best_result.optimal_params, p=p_layers)
+    sequence = decode_sequence(bits)
     
     print("\n--------------------------------------------------")
     print("                   RESULTS                        ")
