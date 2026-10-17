@@ -45,7 +45,7 @@ if __name__ == "__main__":
             maxiter=300, 
             seed=seed, 
             verbose=False
-        )[cite: 5]
+        )
         if best_result is None or res.optimal_energy < best_result.optimal_energy:
             best_result = res
             
