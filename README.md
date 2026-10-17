@@ -45,7 +45,7 @@ Follow these steps to run the simulation locally on your machine:
 
 1. **Clone the Repository**
    ```bash
-   git clone [https://github.com/YourUsername/Q-AMP.git](https://github.com/YourUsername/Q-AMP.git)
+   git clone [https://github.com/Anushreya-Satish/Q-AMP.git](https://github.com/Anushreya-Satish/Q-AMP.git)
    cd Q-AMP
 
 2. **Install Dependencies**
