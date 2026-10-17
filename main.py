@@ -1,3 +1,16 @@
+"""
+main.py - Central Orchestrator for Q-AMP (Quantum Antimicrobial Peptide Designer)
+Team Lead / Coordinator: Anushreya Satish
+Repository: https://github.com/Anushreya-Satish/Q-AMP
+
+Orchestrates the end-to-end quantum antimicrobial peptide discovery pipeline:
+1. QUBO Matrix Generation (Drishti)
+2. Ising Hamiltonian Mapping (Gurshan)
+3. QAOA Circuit Expectation & Spectrum Bounds (Shibasis)
+4. Classical Optimization Engine (Srijan)
+5. Sequence Decoding & Structural Profile Visualization (Satyajit & Visualization)
+"""
+
 import numpy as np
 from qubo_matrix import build_qubo_matrix         
 from ising_mapper import qubo_to_ising, to_sparse_pauli_op  
@@ -6,21 +19,32 @@ from optimizer import run_qaoa_optimization
 from decoder import decode_sequence             
 from visualization import plot_results            
 
-if __name__ == "__main__":
+def main():
     print("==================================================")
     print("   Q-AMP: Quantum Antimicrobial Peptide Designer  ")
     print("==================================================")
+    print(" [INFO] Classical simulation bounds: Recommended N")
+    print("        is between 4 and 12 (due to 2^N scaling).")
+    print("--------------------------------------------------")
 
-    # Default N = 6
     try:
-        chain_length = int(input("Enter peptide chain length N: ") or 6)
+        chain_length = int(input("Enter peptide chain length N (default 6, max 12): ") or 6)
+        if chain_length > 12:
+            print(" ⚠️ Warning: N > 12 exceeds efficient classical statevector memory limits (2^N).")
+            print("    Automatically adjusting N to 12 for safe local simulation.")
+            chain_length = 12
+        elif chain_length < 2:
+            chain_length = 2
     except ValueError:
+        print(" ⚠️ Invalid input detected. Defaulting chain length N = 6.")
         chain_length = 6
 
-    # Default p = 2
     try:
-        p_layers = int(input("Enter QAOA circuit depth p: ") or 2)
+        p_layers = int(input("Enter QAOA circuit depth p (default 2): ") or 2)
+        if p_layers < 1:
+            p_layers = 1
     except ValueError:
+        print(" ⚠️ Invalid input detected. Defaulting circuit depth p = 2.")
         p_layers = 2
         
     print(f"\n[1/5] Building QUBO matrix for N = {chain_length}...")
@@ -67,3 +91,6 @@ if __name__ == "__main__":
     print("[5/5] Generating structural profile visualization...")
     plot_results(sequence)
     print("Visualization successfully saved as 'qaoa_amp_results.png'.")
+
+if __name__ == "__main__":
+    main()
