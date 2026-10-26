@@ -10,7 +10,7 @@ bits[i] is variable x_i, i.e. residue i of the peptide (residue 0 is first).
 
 import numpy as np
 
-AMINO_MAP = {0: "Leu", 1: "Lys"}
+AMINO_MAP = {0: "Lys", 1: "Leu"}
 
 
 def decode_sequence(bits) -> str:
